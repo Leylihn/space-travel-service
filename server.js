@@ -178,13 +178,45 @@ app.get("/summary", (req, res) => {
               </div>
             </dl>
 
-            <button class="govuk-button" type="button" onclick="window.location.href='/'">Submit application</button>
+            <a class="govuk-button" href="/confirmation" role="button">Submit application</a>
           </main>
         </div>
       </body>
     </html>
   `);
 });
+
+app.get("/confirmation", (req, res) => {
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Application submitted - Space travel service</title>
+        <link rel="stylesheet" href="/govuk-frontend/govuk/all.css">
+      </head>
+      <body class="govuk-template__body">
+        <div class="govuk-width-container">
+          <main class="govuk-main-wrapper" id="main-content">
+            <div class="govuk-panel govuk-panel--confirmation">
+              <h1 class="govuk-panel__title">Application submitted</h1>
+              <div class="govuk-panel__body">
+                Your application has been submitted
+              </div>
+            </div>
+
+            
+
+            <a class="govuk-button" href="/">Return to start</a>
+          </main>
+        </div>
+      </body>
+    </html>
+  `);
+});
+
+
 
 function escapeHtml(value) {
   return value.replace(/[&<>"']/g, char => ({
